@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Handler</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(135deg, #f0f0f7, #bab6d0);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        h1 {
+            margin: 20px 0;
+            font-size: 36px;
+            color: #5c5b7c;
+        }
+        form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        input, select, button {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+        }
+        button {
+            background: #6c63ff;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+        button:hover {
+            background: #564ac5;
+        }
+        .show {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            width: 90%;
+            margin-top: 20px;
+        }
+        .pending, .process, .complete {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .pending h3, .process h3, .complete h3 {
+            font-size: 26px;
+            margin-bottom: 20px;
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        .pending h3{
+            background-color: rgb(203, 221, 90);
+        }
+        .process h3{
+            background-color: #cf4848;
+        }
+        .complete h3{
+            background-color: rgb(122, 225, 122);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+        a {
+            text-decoration: none;
+            background-color: transparent;
+            font-weight: bold;
+            padding: 7px 10px;
+            border: 2px solid #ff6b6b;
+            color: black;
+            transition: all 0.3s linear;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            border-radius: 7px;
+        }
+        a:hover {
+            background-color: #ff6b6b;
+            color: white;
+            border: 2px solid #ff6b6b;
+        }
+    </style>
+</head>
+<body>
+    <h1>Todo List</h1>
+    <main>
+        <form method="post" action="/insertData">
+            <input type="text" placeholder="Add a new task" name="task" required>
+            <select name="taskType" required>
+                <option value="--Select Type--">--Select Type--</option>
+                <option value="Pending">Pending</option>
+                <option value="Process">Process</option>
+                <option value="Complete">Complete</option>
+            </select>
+            <input type="date" name="date" required>
+            <button type="submit">Add</button>
+        </form>
+    </main>
+    <div class="show">
+        <div class="pending">
+            <h3>Pending Tasks</h3>
+            <table>
+                <tr>
+                    <th>Task</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+                <% pendingTask.map((v, i) => { %>
+                    <tr>
+                        <td><%= v.task %></td>
+                        <td><%= v.date %></td>
+                        <td>
+                            <a href="/deletePending/?pos=<%= i %>">Delete</a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </table>
+        </div>
+        <div class="process">
+            <h3>Process Tasks</h3>
+            <table>
+                <tr>
+                    <th>Task</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+                <% processTask.map((v, i) => { %>
+                    <tr>
+                        <td><%= v.task %></td>
+                        <td><%= v.date %></td>
+                        <td>
+                            <a href="/deleteProcess/?pos=<%= i %>">Delete</a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </table>
+        </div>
+        <div class="complete">
+            <h3>Complete Tasks</h3>
+            <table>
+                <tr>
+                    <th>Task</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+                <% completeTask.map((v, i) => { %>
+                    <tr>
+                        <td><%= v.task %></td>
+                        <td><%= v.date %></td>
+                        <td>
+                            <a href="/deleteComplete/?pos=<%= i %>">Delete</a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
