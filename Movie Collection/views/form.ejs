@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Movie Insert Page</title>
+    <style>
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #f8f9fa;
+          margin: 0;
+          padding: 0;
+      }
+
+      h1 {
+          text-align: center;
+          color: #6c757d;
+          margin-top: 20px;
+      }
+
+      form {
+          width: 50%;
+          margin: 20px auto;
+          padding: 20px;
+          background: #fff;
+          border-radius: 8px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-table {
+          width: 100%;
+      }
+
+      .form-table td {
+          padding: 10px;
+      }
+
+      input[type="text"],
+      input[type="date"],
+      input[type="file"] {
+          width: 100%;
+          padding: 8px;
+          border: 1px solid #ced4da;
+          border-radius: 4px;
+      }
+
+      label {
+          font-weight: bold;
+          color: #495057;
+      }
+
+      .submit-btn {
+          width: 100%;
+          padding: 10px;
+          background-color: #a249cf;
+          border: none;
+          color: white;
+          font-size: 16px;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: 0.3s;
+      }
+
+      .submit-btn:hover {
+          background-color: #cf92ee;
+      }
+
+      input[type="checkbox"] {
+          margin-right: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Movie Insert Page</h1>
+    <form action="<%= movie ? '/update-movie/' + movie._id : '/add-movie' %>" method="post" enctype="multipart/form-data">
+        <table class="form-table">
+            <tr>
+                <td><label for="title">Movie Name:</label></td>
+                <td><input type="text" name="name" id="title" value="<%= movie ? movie.name : '' %>" required></td>
+            </tr>
+            <tr>
+                <td><label>Movie Genre:</label></td>
+                <td>
+                    <% ["Love-Story", "Action", "Comedy", "Thriller", "History"].forEach((v) => { %>
+                        <label>
+                            <input type="checkbox" name="genre" value="<%= v %>" <%= movie && movie.genre.includes(v) ? 'checked' : '' %>> <%= v %>
+                        </label>
+                    <% }); %>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="date">Movie Release Date:</label></td>
+                <td><input type="date" name="release" id="date" value="<%= movie ? movie.release : '' %>" required></td>
+            </tr>
+            <tr>
+                <td><label for="publisher">Movie Director:</label></td>
+                <td><input type="text" name="director" id="publisher" value="<%= movie ? movie.director : '' %>" required></td>
+            </tr>
+            <tr>
+                <td><label for="coverImg">Movie Poster:</label></td>
+                <td>
+                    <input type="file" name="poster" id="coverImg">
+                    <% if (movie && movie.poster) { %>
+                        <p>Current Poster:</p>
+                        <img src="<%= movie.poster %>" width="100">
+                    <% } %>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" class="submit-btn" value="<%= movie ? 'Update' : 'Submit' %>"></td>
+            </tr>
+        </table>
+    </form>
+    
+  </body>
+</html>

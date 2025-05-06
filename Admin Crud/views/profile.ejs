@@ -1,0 +1,113 @@
+<%- include('header') %>
+
+<style>
+  .content {
+    margin-left: 250px;
+    padding-top: 90px;
+    padding-right: 20px;
+  }
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  .table th, .table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .table th {
+    background-color: #337ab7;
+    color: white;
+    font-weight: bold;
+  }
+
+  .table td {
+    color: #555;
+  }
+
+  .table .form-label {
+    font-weight: 600;
+    color: #333;
+  }
+
+  .btn-custom {
+    background-color: #337ab7;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+
+  .btn-custom:hover {
+    background-color: #337ab7;
+  }
+
+  .profile-container {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .text-end {
+    text-align: right;
+  }
+</style>
+
+<div class="d-flex">
+  <div class="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9 p-5 profile-container">
+          <h3 class="mb-4">Admin Profile</h3>
+          <table class="table">
+            <tr>
+              <th>Field</th>
+              <th>Details</th>
+            </tr>
+            <tr>
+              <td><label for="firstName" class="form-label">First Name</label></td>
+              <td><%= currentAdmin.fname %></td>
+            </tr>
+            <tr>
+              <td><label for="lastName" class="form-label">Last Name</label></td>
+              <td><%= currentAdmin.lname %></td>
+            </tr>
+            <tr>
+              <td><label for="email" class="form-label">Email Address</label></td>
+              <td><%= currentAdmin.email %></td>
+            </tr>
+            <tr>
+              <td><label for="password" class="form-label">Password</label></td>
+              <td>••••••••</td>
+            </tr>
+            <tr>
+              <td><label for="gender" class="form-label">Gender</label></td>
+              <td><%= currentAdmin.gender %></td>
+            </tr>
+            <tr>
+              <td><label for="hobby" class="form-label">Hobby</label></td>
+              <td><%= currentAdmin.hobby %></td>
+            </tr>
+            <tr>
+              <td><label for="city" class="form-label">City</label></td>
+              <td><%= currentAdmin.city %></td>
+            </tr>
+            <tr>
+              <td><label for="description" class="form-label">Description</label></td>
+              <td><%= currentAdmin.desc %></td>
+            </tr>
+          </table>
+          <div class="text-end mt-4">
+            <a href="/updateProfile" class="btn btn-custom">Edit Profile</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

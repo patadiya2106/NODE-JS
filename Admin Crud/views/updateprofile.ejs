@@ -1,0 +1,156 @@
+<%- include('header') %>
+
+<style>
+  .content {
+    margin-left: 250px;
+    padding-top: 90px;
+    padding-right: 20px;
+  }
+
+  .form-section {
+    margin-top: 20px;
+  }
+
+  .form-label {
+    font-weight: 600;
+    color: #555;
+  }
+
+  .form-control {
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #f8f9fa;
+  }
+  
+  .form-check-input {
+    width: 20px;
+    height: 20px;
+    margin-top: 8px;
+  }
+
+  .form-check-label {
+    font-size: 16px;
+    color: #555;
+  }
+
+  .select-box {
+    font-size: 16px;
+    background-color: #f8f9fa;
+  }
+
+  .avatar-preview {
+    margin: 20px 0;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .btn-primary {
+    width: 100%;
+    padding: 12px;
+  }
+  .form-group {
+    margin-bottom: 25px;
+  }
+
+  .col-md-6 {
+    margin-bottom: 15px; 
+  }
+
+  .form-check {
+    margin-right: 20px;
+  }
+  .py{
+    margin-top: 10%;
+  }
+</style>
+
+<div class="d-flex">
+  <div class="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 p-4">
+          <h3>Update Profile</h3>
+          <div class="row mt-4">
+            <div class="col-md-12 form-section">
+              <form action="/editProfile" method="post" enctype="multipart/form-data">
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="firstName" class="form-label">First Name</label>
+                    <input type="text" id="firstName" name="fname" class="form-control" value="<%= currentAdmin.fname %>">
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="lastName" class="form-label">Last Name</label>
+                    <input type="text" id="lastName" name="lname" class="form-control" value="<%= currentAdmin.lname %>">
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" id="email" name="email" class="form-control" value="<%= currentAdmin.email %>">
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" id="password" name="password" class="form-control" value="<%= currentAdmin.password %>">
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Gender</label>
+                    <div class="d-flex gap-3">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gender" value="male" <%= currentAdmin.gender === 'male' ? 'checked' : '' %>>
+                        <label class="form-check-label">Male</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gender" value="female" <%= currentAdmin.gender === 'female' ? 'checked' : '' %>>
+                        <label class="form-check-label">Female</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Hobby</label>
+                    <% let hobbies = [ 'Coding', 'Gaming']; %>
+                    <div class="d-flex flex-wrap gap-2">
+                      <% hobbies.forEach(item => { %>
+                        <div class="form-check">
+                          <input type="checkbox" class="form-check-input" name="hobby" value="<%= item %>" 
+                            <%= currentAdmin.hobby && currentAdmin.hobby.includes(item) ? 'checked' : '' %>>
+                          <label class="form-check-label"><%= item %></label>
+                        </div>
+                      <% }) %>
+                    </div>
+                  </div>
+                  
+
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">City</label>
+                    <% let myCity = ['Surat', 'Baroda', 'Rajkot', 'Mumbai']; %>
+                    <select class="form-select select-box" name="city">
+                      <option>Select</option>
+                      <% myCity.forEach(city => { %>
+                        <option value="<%= city %>" <%= currentAdmin.city === city ? 'selected' : '' %>><%= city %></option>
+                      <% }) %>
+                    </select>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="desc" class="form-label">Description</label>
+                    <input type="text" id="desc" name="desc" class="form-control" value="<%= currentAdmin.desc %>">
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="avatar" class="form-label">Image</label>
+                    <input type="file" id="avatar" name="avatar" class="form-control">
+                    <img src="../<%= currentAdmin.avatar %>" class="mt-5 avatar-preview" alt="Current image" />
+                  </div>
+                  <div class="col-md-6 mb-3 py">
+                    <button type="submit" class="btn btn-primary mt-3">Save</button>
+                  </div>
+                </div>
+                
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
