@@ -41,13 +41,13 @@ const checkEmail = async (req, res) => {
                 auth: {
                     user: "rahulpatadiya07@gmail.com",
                     pass: "elyiecppuhrbpfnk",
-                },
+                }
             });
 
             let otp = Math.floor(Math.random() * 900000000);
             const mail = {
                 from: '"Admin Panel" rahulpatadiya07@gmail.com',
-                to: "nencymaisuriya@gmail.com",
+                to: email,
                 subject: "OTP Verification - Password Recovery",
                 html: `
                 <div style="font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;">
@@ -108,7 +108,7 @@ const checkOtp = (req, res) => {
         if (req.body.otp == req.cookies.otp) {
             res.redirect('/newSetPassword');
         } else {
-            res.redirect('back');
+            res.redirect('/newSetPassword');
             console.log("otp has not matched...");
         }
     } catch (error) {
@@ -143,6 +143,8 @@ const checknewpassword = async (req, res) => {
                 console.log("new password and confim password is not match");
                 res.redirect('back');
             }
+        }else{
+            res.redirect('/newSetPassword')
         }
     } catch (error) {
         res.send(`<h2> Not found : ${error} </h2>`);

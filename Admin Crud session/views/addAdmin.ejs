@@ -1,0 +1,84 @@
+<%- include('header') %>
+
+<div class="container" style="margin-left: 250px; padding-top: 90px;">
+    <div class="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header" style="margin: 10px 0;">
+                        <div class="card-title">Add New Admin</div>
+                    </div>
+                    <div class="card-body">
+                        <form action="/insert" method="POST" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-6 form-group" style="margin-bottom: 20px;">
+                                    <label for="fname">First Name</label>
+                                    <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter First Name" required />
+                                </div>                                
+                                <div class="col-md-6 form-group" style="margin-bottom: 20px;">
+                                    <label for="lname">Last Name</label>
+                                    <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter Last Name" required />
+                                </div>
+                                <div class="col-md-6 form-group" style="margin-bottom: 20px;">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" required />
+                                </div>
+                                <div class="col-md-6 form-group" style="margin-bottom: 20px;">
+                                    <label for="password">Password</label>
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required />
+                                </div>
+                                <div class="col-md-6 form-group" style="margin-bottom: 20px;">
+                                    <label>Gender</label><br />
+                                    <div class="d-flex">
+                                        <div class="form-check" style="margin-right: 20px;">
+                                            <input class="form-check-input" type="radio" name="gender" value="male" required /> Male
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="gender" value="female" required /> Female
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 form-group" style="margin-bottom: 20px;">
+                                    <label>Hobby</label>
+                                    <div class="d-flex flex-wrap">
+                                        <% let myHobby = [ 'Coding', 'Gaming']; %>
+                                        <% myHobby.forEach(item => { %>
+                                            <div class="form-check" style="margin-right: 20px;">
+                                                <input type="checkbox" class="form-check-input" name="hobby" value="<%= item %>" />
+                                                <%= item %>
+                                            </div>
+                                        <% }) %>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 form-group" style="margin-bottom: 20px;">
+                                    <label for="city">City</label>
+                                    <select class="form-select" name="city" required>
+                                        <option value="" disabled selected>Select City</option>
+                                        <option value="Surat">Surat</option>
+                                        <option value="Baroda">Baroda</option>
+                                        <option value="Rajkot">Rajkot</option>
+                                        <option value="Mumbai">Mumbai</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 form-group" style="margin-bottom: 20px;">
+                                    <label for="avatar">Image</label>
+                                    <input type="file" class="form-control-file" id="avatar" name="avatar" required />
+                                </div>
+
+                                <div class="col-md-6 form-group" style="margin-bottom: 20px;">
+                                    <label for="desc">Description</label>
+                                    <textarea class="form-control" id="desc" name="desc" rows="4" required></textarea>
+                                </div>
+                            </div>
+
+                            <div class="card-action text-end">
+                                <button type="submit" class="btn btn-primary">Add Admin</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('footer') %>

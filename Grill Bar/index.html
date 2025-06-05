@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GrillBar</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #121212;
+    }
+
+    header {
+      background-color: #000;
+      color: #00ff88;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 8px rgba(0, 255, 136, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
+    nav a {
+      color: #00ff88;
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0%;
+      height: 2px;
+      background: #00ff88;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #00ffaa;
+      transform: scale(1.05);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+     .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      color: #00ff88;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        background-color: #000;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        padding: 1rem 2rem;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      nav a,
+      .button {
+        margin: 0.75rem 0;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+.button {
+  position: relative;
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 16px;
+  color: white;
+  background: linear-gradient(to right, #007BFF 50%, #0056b3 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-position 0.5s ease-out;
+}
+
+.button:hover {
+  background-position: left bottom;
+}
+</style>
+
+<button class="button">Sign Up</button>
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">GrillBar</div>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <nav id="nav">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
+      <button class="button">Sign Up</button>
+    </nav>
+  </header>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('nav');
+      nav.classList.toggle('active');
+    }
+  </script>
+
+</body>
+</html>
