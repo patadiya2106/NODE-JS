@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Admin Panel - Startmin Theme</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../../css/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../../css/startmin.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../../css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Top Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">My App</a>
+            </div>
+
+            <ul class="nav navbar-right navbar-top-links">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> Profile <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="/viewProfile"><i class="fa fa-user fa-fw"></i> Profile</a></li>
+                        <li><a href="/changePassword"><i class="fa fa-gear fa-fw"></i> Change Password</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Sidebar -->
+        <aside class="sidebar navbar-default" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li class="sidebar-search">
+                        <div class="input-group custom-search-form">
+                            <input type="text" class="form-control" placeholder="Search...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </li>
+
+                    <li><a href="/dashboard"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-user fa-fw"></i> Admin <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="/addAdmin">Add Admin</a></li>
+                            <li><a href="/viewAdmin">View Admin</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-list fa-fw"></i> Category <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="/category/addCategoryPage">Add Category</a></li>
+                            <li><a href="/category/viewCategoryPage">View Category</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-sitemap fa-fw"></i> Subcategory <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="/subcategory/addSubCategoryPage">Add Subcategory</a></li>
+                            <li><a href="/subcategory/viewSubCategory">View Subcategory</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-tags fa-fw"></i> Extra Category <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="/extracategory/addextracategorypage">Add Extra Category</a></li>
+                            <li><a href="/extracategory/viewextracategorypage">View Extra Category</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-cubes fa-fw"></i> Product <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="/product/addProductsPage">Add Product</a></li>
+                            <li><a href="/product/viewProductPage">View Product</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="/viewProfile"><i class="fa fa-user-circle fa-fw"></i> Profile</a></li>
+                    <li><a href="/changePassword"><i class="fa fa-gear fa-fw"></i> Change Password</a></li>
+                    <li><a href="/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+                </ul>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/metisMenu.min.js"></script>
+    <script>
+        $(function () {
+            $('#side-menu').metisMenu();
+        });
+    </script>
+
+</body>
+
+</html>
