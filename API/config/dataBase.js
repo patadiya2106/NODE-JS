@@ -7,15 +7,13 @@ mongoose.connect(URI);
 const db = mongoose.connection;
 
 db.on("connected", () => {
-  console.log("DB is connected...!!!!!");
+  console.log("Database is connected...!!!!!");
 });
-
 db.on("error", (err) => {
   console.log("Error : ", err);
 });
-
 db.on("disconnected", () => {
-  console.log("DB is disconnected....!!!!!");
+  console.log("Database is disconnected....!!!!!");
 });
 
 module.exports = db;
